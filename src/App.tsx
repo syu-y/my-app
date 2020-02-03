@@ -1,24 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route, Switch } from 'react-router-dom';
+import Header from './components/commons/Header';
+import APage from './pages/APage';
+import BPage from './pages/BPage';
+import TopPage from './pages/TopPage';
 
 const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header/>
+      <Switch>
+        <Route path="/apage" component={APage} />
+        <Route path="/bpage" component={BPage} />
+        <Route path="/" component={TopPage} />
+        <Route component={TopPage} />
+      </Switch>
     </div>
   );
 }
