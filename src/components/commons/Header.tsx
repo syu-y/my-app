@@ -17,7 +17,7 @@ const Header: React.FC = () => {
         <IconButton edge="start" color="inherit" aria-label="menu">
           <MenuIcon />
         </IconButton>
-        <Typography variant="h6" component={Link} to="/">Top</Typography>
+        <Typography variant="h6" component={Link} to="/top">Top</Typography>
         <Typography variant="h6" component={Link} to="/apage">A</Typography>
         <Typography variant="h6" component={Link} to="/bpage">B</Typography>
       </Toolbar>
