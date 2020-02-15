@@ -4,8 +4,7 @@ import styled from 'styled-components';
 import Header from './components/commons/Header';
 import APage from './pages/APage';
 import BPage from './pages/BPage';
-import TopPage from './pages/TopPage';
-import LoginPage from './pages/LoginPage';
+import TopPage from './pages/TopPage/container';
 
 const MainWrapper = styled.main`
     height: 100%;
@@ -20,9 +19,7 @@ const App = () => {
         <Switch>
           <Route path="/apage" component={APage} />
           <Route path="/bpage" component={BPage} />
-          <Route path="/top" component={TopPage} />
-          <Route path="/" component={LoginPage} />
-          <Route component={LoginPage} />
+          <Route path="/" component={TopPage} />
         </Switch>
       </MainWrapper>
     </div>
