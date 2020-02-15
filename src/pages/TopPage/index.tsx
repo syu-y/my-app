@@ -12,7 +12,7 @@ import { BookmarkActions } from '../../actions/movieBookmarkActions';
 import PageName from '../../components/commons/PageName';
 import MessageWrapper from '../../components/commons/MessageWrapper';
 // const CONNPASS_API_URL = "https://connpass.com/api/v1/event/";
-const MOVIE_API_URL = "https://www.omdbapi.com/?s=iron&apikey=" + config.apiKey;
+const MOVIE_API_URL = "https://www.omdbapi.com/?s=spider&apikey=" + config.apiKey;
 
 const MoviesWrapper =　styled.div`
   display: flex;

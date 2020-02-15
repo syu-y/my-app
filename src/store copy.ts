@@ -16,26 +16,21 @@ const composeEnhancer: typeof compose = (window as any).__REDUX_DEVTOOLS_EXTENSI
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['bookmark', 'movie']
+  whitelist: ['']
 }
 
 export const history = createBrowserHistory();
 
-const rootReducer = combineReducers({
-  router: connectRouter(history),
-  sideMenuReducer,
-  // other reducer...
-  movie: movieReducer,
-  bookmark: bookmarkReducer
-});
-
-// 永続化設定されたReducerとして定義
-const persistedReducer = persistReducer(persistConfig, rootReducer)
-
-const store = createStore(
-  persistedReducer,
+export default createStore(
+  combineReducers({
+      router: connectRouter(history),
+      sideMenuReducer,
+      // other reducer...
+      movie: movieReducer,
+      bookmark: bookmarkReducer
+  }),
   composeEnhancer(applyMiddleware(routerMiddleware(history), thunk)),
-)
+);
 
 export type ReduxState = {
   router: RouterState;
@@ -46,6 +41,3 @@ export type ReduxState = {
 };
 
 export type ReduxAction = Action | RouterAction | SideMenuActions | MovieActions | BookmarkActions;
-
-export const persistor = persistStore(store)
-export default store;
