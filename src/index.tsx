@@ -8,6 +8,8 @@ import { ConnectedRouter } from "connected-react-router";
 import store, { history, persistor } from "./store";
 import { PersistGate } from 'redux-persist/integration/react'
 
+// persistor.purge();
+
 ReactDOM.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>

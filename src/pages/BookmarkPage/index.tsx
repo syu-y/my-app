@@ -7,12 +7,14 @@ import PageName from '../../components/commons/PageName';
 import MessageWrapper from '../../components/commons/MessageWrapper';
 
 import styled from 'styled-components';
+import MovieDetails from '../../components/MovieDetails.tsx/MovieDetails';
 
 const MoviesWrapper =　styled.div`
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   text-align: center;
+  justify-content: center;
 `
 type AppProps = BookMarkState & BookmarkActions;
 
@@ -35,7 +37,12 @@ const BookmarkPage: React.FC<AppProps> = (props: AppProps) => {
             <MessageWrapper message="None..."/>
           ) : (
           props.bookmarks.map((movie, index) => (
-            <MovieContent
+            // <MovieContent
+            //   key={`${index}-${movie.Title}`}
+            //   movie={movie}
+            //   mark={markOff}
+            // />
+            <MovieDetails
               key={`${index}-${movie.Title}`}
               movie={movie}
               mark={markOff}

@@ -19,6 +19,7 @@ const MoviesWrapper =　styled.div`
   flex-wrap: wrap;
   flex-direction: row;
   text-align: center;
+  justify-content: center;
 `
 
 type ResponseType = {
@@ -78,7 +79,19 @@ const TopPage: React.FC<AppProps> = (props: AppProps) => {
 
     const markOn = (movie: Movie) => {
       // console.log(movie);
-      props.bookmarkOn(movie);
+      fetcher<Movie>(
+        `https://www.omdbapi.com/?i=${movie.imdbID}&apikey=${config.apiKey}`,
+        {
+          headers: { }
+        }
+        )
+        .then(item => {
+          props.bookmarkOn(item);
+        })
+        .catch(err => {
+          props.requestFailure(err);
+        })
+      // props.bookmarkOn(movie);
     }
 
     return (
@@ -97,8 +110,8 @@ const TopPage: React.FC<AppProps> = (props: AppProps) => {
               movie={movie}
               mark={markOn}
             />
-          ))
-        )}
+          )))
+        }
       </MoviesWrapper>
     </div>
   );

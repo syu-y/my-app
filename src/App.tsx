@@ -20,8 +20,8 @@ const App = () => {
       <ToastContainer autoClose={2000} />
       <MainWrapper>
         <Switch>
-          <Route path="/apage" component={BookmarkPage} />
-          <Route path="/bpage" component={BPage} />
+          {/* <Route path="/bpage" component={BPage} /> */}
+          <Route path="/bookmark" component={BookmarkPage} />
           <Route path="/" component={TopPage} />
         </Switch>
       </MainWrapper>

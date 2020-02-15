@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Button, Input, TextField } from '@material-ui/core';
+import { TextField } from '@material-ui/core';
 import styled from 'styled-components';
 
 const StyledInputButton = styled.input`
   padding: 6px 10px;
-  margin: 5px 10px 5px 10px;
+  margin: 5px 10px 25px 10px;
   color: #fff;
   background-color: #3f51b5;
   font-size: 1.0rem;
@@ -13,7 +13,7 @@ const StyledInputButton = styled.input`
   letter-spacing: 0.05em;
 `
 const StyledInputText = styled(TextField)`
-  margin: 5px 10px 5px 10px;
+  margin: 5px 10px 25px 10px;
   vertical-align: bottom;
 `
 

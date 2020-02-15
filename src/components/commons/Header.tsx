@@ -11,8 +11,14 @@ import styled from 'styled-components';
  * 共通部分：Headerコンポーネント
  */
 
-const StyledTypography = styled(Typography)`
+const StyledAppName = styled(Typography)`
+  flex-grow: 1;
   margin: 2px 5px 2px 5px;
+`;
+
+const StyledTypography = styled(Typography)`
+  margin: 2px 10px 2px 5px;
+  width: spacing(7);
 `;
 
 const StyledLink = styled(Link)`
@@ -33,9 +39,10 @@ const Header: React.FC = () => {
         <IconButton edge="start" color="inherit" aria-label="menu">
           <MenuIcon />
         </IconButton>
+        <StyledAppName variant="h6"><StyledLink to="/">Movie Service</StyledLink></StyledAppName>
         <StyledTypography variant="h6"><StyledLink to="/">Top</StyledLink></StyledTypography>
-        <StyledTypography variant="h6"><StyledLink to="/apage">Bookmarks</StyledLink></StyledTypography>
-        <StyledTypography variant="h6"><StyledLink to="/bpage">B</StyledLink></StyledTypography>
+        <StyledTypography variant="h6"><StyledLink to="/bookmark">Bookmarks</StyledLink></StyledTypography>
+        {/* <StyledTypography variant="h6"><StyledLink to="/bpage">B</StyledLink></StyledTypography> */}
       </Toolbar>
     </AppBar>
   );
