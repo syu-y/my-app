@@ -7,17 +7,12 @@ import { MovieActions } from '../../actions/movieActions';
 import config from '../../config'
 import MovieContent from '../../components/MovieContents/MovieContents';
 import styled from 'styled-components';
-
+import { BookMarkState } from '../../states/stateBookmarks';
+import { BookmarkActions } from '../../actions/movieBookmarkActions';
+import PageName from '../../components/commons/PageName';
+import MessageWrapper from '../../components/commons/MessageWrapper';
 // const CONNPASS_API_URL = "https://connpass.com/api/v1/event/";
 const MOVIE_API_URL = "https://www.omdbapi.com/?s=iron&apikey=" + config.apiKey;
-
-const PageName =　styled.h1`
-  margin: auto;
-  padding: 30px 20px 10px 20px;
-  font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 48px;
-`
 
 const MoviesWrapper =　styled.div`
   display: flex;
@@ -26,27 +21,19 @@ const MoviesWrapper =　styled.div`
   text-align: center;
 `
 
-const　MessageWrapper =　styled.span`
-  margin: auto;
-  padding: 20px;
-  font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 32px;
-`
-
 type ResponseType = {
   Search: Movie[]
   totalResults: number
   Response: string
 }
 
-type AppProps = MovieState & MovieActions;
+type AppProps = MovieState & MovieActions & BookMarkState & BookmarkActions;
 
 const TopPage: React.FC<AppProps> = (props: AppProps) => {
   const NotFoundMessage = "Not Found!" as const;
 
   useEffect(() => {
-
+    console.log(props)
     fetcher<ResponseType>(
       MOVIE_API_URL,
       {
@@ -87,25 +74,29 @@ const TopPage: React.FC<AppProps> = (props: AppProps) => {
       .catch(err => {
         props.requestFailure(err);
       })
-      console.log("props.movies : " + props.movies)
+    }
+
+    const markOn = (movie: Movie) => {
+      // console.log(movie);
+      props.bookmarkOn(movie);
     }
 
     return (
       <div>
-      <PageName>Movie Search Service</PageName>
+      <PageName title="Movie Search!"/>
       <Search search={search} />
       <MoviesWrapper className="movies">
         { props.loading && !props.errorMessage ? (
-          <MessageWrapper>
-            loading...
-          </MessageWrapper>
+          <MessageWrapper message="loading..."/>
         ) : props.errorMessage ? (
-          <MessageWrapper className="errorMessage">
-            {props.errorMessage}
-          </MessageWrapper>
+          <MessageWrapper message={props.errorMessage}/>
         ) : (
           props.movies.map((movie, index) => (
-            <MovieContent key={`${index}-${movie.Title}`} movie={movie}/>
+            <MovieContent
+              key={`${index}-${movie.Title}`}
+              movie={movie}
+              mark={markOn}
+            />
           ))
         )}
       </MoviesWrapper>

@@ -24,7 +24,7 @@ export const movieReducer = reducerWithInitialState(initialState)
   })
   .case(movieActions.requestSuccess, (state, movies) => {
     console.log("search success");
-    console.log(movies);
+    // console.log(movies);
     return Object.assign({}, state, {
       loading: false,
       movies: movies,
@@ -32,7 +32,7 @@ export const movieReducer = reducerWithInitialState(initialState)
     });
   })
   .case(movieActions.requestFailure, (state, errorMessage) => {
-    console.log("search faulure");
+    console.log("search failure");
     return Object.assign({}, state, {
       loading: false,
       errorMessage: errorMessage

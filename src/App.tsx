@@ -2,9 +2,11 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 import Header from './components/commons/Header';
-import APage from './pages/APage';
 import BPage from './pages/BPage';
 import TopPage from './pages/TopPage/container';
+import BookmarkPage from './pages/BookmarkPage/container';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const MainWrapper = styled.main`
     height: 100%;
@@ -15,9 +17,10 @@ const App = () => {
   return (
     <div className="App">
       <Header/>
+      <ToastContainer autoClose={2000} />
       <MainWrapper>
         <Switch>
-          <Route path="/apage" component={APage} />
+          <Route path="/apage" component={BookmarkPage} />
           <Route path="/bpage" component={BPage} />
           <Route path="/" component={TopPage} />
         </Switch>

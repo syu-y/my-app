@@ -1,13 +1,14 @@
 import { reducerWithInitialState } from 'typescript-fsa-reducers';
 import { movieBookmarkActions } from '../actions/movieBookmarkActions';
 import { Movie } from '../actions/MovieType';
+import { toast } from "react-toastify";
 
 export interface BookMarkState {
-  movies: Array<Movie>
+  bookmarks: Array<Movie>
 }
 
 export const initialState: BookMarkState = {
-  movies: []
+  bookmarks: []
 };
 
 function addItem(array: Array<Movie>, item: Movie) {
@@ -21,13 +22,16 @@ function removeItem(array: Array<Movie>, item: Movie) {
 export const bookmarkReducer = reducerWithInitialState(initialState)
   .case(movieBookmarkActions.bookmarkOn, (state, movie) => {
     console.log("bookmark on");
+    console.log(state.bookmarks);
+    toast.success("Add Bookmark!");
     return Object.assign({}, state, {
-      movies: addItem(state.movies, movie)
+      bookmarks: addItem(state.bookmarks, movie)
     });
   })
   .case(movieBookmarkActions.bookmarkOff, (state, movie) => {
     console.log("bookmark off");
+    toast.warn("Remove Bookmark!");
     return Object.assign({}, state, {
-      movies: removeItem(state.movies, movie)
+      bookmarks: removeItem(state.bookmarks, movie)
     });
   })
