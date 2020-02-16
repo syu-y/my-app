@@ -7,8 +7,12 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+import Rating from '@material-ui/lab/Rating';
+import StarBorderIcon from '@material-ui/icons/StarBorder';
 import { Movie } from '../../actions/MovieType';
 import styled from 'styled-components';
+import { Link } from '@material-ui/core';
 
 const MovieCardWrapper =　styled(Card)`
   padding: 5px 25px 10px 25px;
@@ -24,8 +28,6 @@ const MovieCardContentWrapper =　styled(CardContent)`
   padding-top: 30px;
   height: 150px;
 `
-
-
 
 type LocalProps = {
     movie: Movie
@@ -58,6 +60,16 @@ const MovieDetails: React.FC<LocalProps> = (props: LocalProps) => {
             </Typography>
           </MovieCardContentWrapper>
         </CardActionArea>
+        <Box component="fieldset" mb={3} borderColor="transparent">
+          <Typography component="legend">Rate : {(parseInt(props.movie.imdbRating)/2).toFixed()}</Typography>
+          <Rating
+            name="half-customized-10"
+            max={5}
+            precision={1}
+            defaultValue={parseInt(props.movie.imdbRating)/2}
+            readOnly
+            />
+        </Box>
         <CardActions>
           <Button
             size="small"

@@ -7,18 +7,22 @@ import MenuIcon from '@material-ui/icons/Movie';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-/**
- * 共通部分：Headerコンポーネント
- */
+const StyledAppIcon = styled(MenuIcon)`
+  flex-grow: 1;
+  margin: 2px 5px 2px 5px;
+  vertical-align: middle;
+`;
 
 const StyledAppName = styled(Typography)`
   flex-grow: 1;
   margin: 2px 5px 2px 5px;
+  vertical-align: middle;
 `;
 
 const StyledTypography = styled(Typography)`
   margin: 2px 10px 2px 5px;
   width: spacing(7);
+  vertical-align: middle;
 `;
 
 const StyledLink = styled(Link)`
@@ -37,7 +41,7 @@ const Header: React.FC = () => {
     <AppBar position="static">
       <Toolbar>
         <IconButton edge="start" color="inherit" aria-label="menu">
-          <MenuIcon />
+          <StyledAppIcon />
         </IconButton>
         <StyledAppName variant="h6"><StyledLink to="/">Movie Service</StyledLink></StyledAppName>
         <StyledTypography variant="h6"><StyledLink to="/">Top</StyledLink></StyledTypography>
