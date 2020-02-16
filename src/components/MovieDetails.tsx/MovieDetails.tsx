@@ -27,7 +27,17 @@ const MoviePosterWrapper =　styled(CardMedia)`
 const MovieCardContentWrapper =　styled(CardContent)`
   padding-top: 30px;
   height: 150px;
+  `
+
+const RatingWrapper =　styled(Rating)`
+  padding-top: 5px;
+  height: 20px;
 `
+const StyledTypography = styled(Typography)`
+  margin: 2px 10px 2px 5px;
+  padding-bottom: 5px;
+  text-align: right;
+`;
 
 type LocalProps = {
     movie: Movie
@@ -55,25 +65,26 @@ const MovieDetails: React.FC<LocalProps> = (props: LocalProps) => {
             <Typography gutterBottom variant="h5" component="h2">
               {props.movie.Title}
             </Typography>
+            <StyledTypography variant="subtitle2" color="textSecondary">
+              at {props.movie.Released}
+            </StyledTypography>
             <Typography variant="body2" color="textSecondary" component="p">
               {props.movie.Plot !== "N/A" ? props.movie.Plot : "Sorry, Could not find this plot..."}
             </Typography>
           </MovieCardContentWrapper>
         </CardActionArea>
-        <Box component="fieldset" mb={3} borderColor="transparent">
-          <Typography component="legend">Rate : {(parseInt(props.movie.imdbRating)/2).toFixed()}</Typography>
-          <Rating
+          <RatingWrapper
             name="half-customized-10"
             max={5}
             precision={1}
             defaultValue={parseInt(props.movie.imdbRating)/2}
             readOnly
             />
-        </Box>
         <CardActions>
           <Button
+            variant="outlined"
             size="small"
-            color="primary"
+            color="secondary"
             onClick={callBookmarkFunction}
             >
             Remove

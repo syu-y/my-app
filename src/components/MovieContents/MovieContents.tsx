@@ -120,6 +120,7 @@ const MovieDetails: React.FC<LocalProps> = (props: LocalProps) => {
           <Button
             size="small"
             color="primary"
+            variant="outlined"
             onClick={callBookmarkFunction}
             >
             Favorite

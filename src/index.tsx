@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import { ConnectedRouter } from "connected-react-router";
 import store, { history, persistor } from "./store";
 import { PersistGate } from 'redux-persist/integration/react'
+import './config';
 
 // persistor.purge();
 
